@@ -20,10 +20,9 @@
         class="home-swiper"
         v-bind:banners="banners"
         :recommends="recommends"
-           @getTopHeight='getTopHeight'
       ></home-swiper>
       <rz-recommend v-bind:recommend="recommends"></rz-recommend>
-      <feature-view></feature-view>
+      <feature-view ></feature-view>
       <tab-control
         v-bind:names="['流行', '新款', '精选']"
         class="TabControl"
@@ -78,7 +77,8 @@ export default {
       backTopShow: false,
       page: 1,
       saveY: 0,
-      topHeight:0
+      topHeight:0,
+      feature : false,
     };
   },
   created() {
@@ -92,6 +92,9 @@ export default {
     this.$bus.$on("imgLoading", () => {
       this.$refs.scroll && refresh();
     });
+  },
+  updated() {
+   this.$refs.scroll.refresh();
   },
   activated() {
    this.$refs.scroll&&this.$refs.scroll.refresh();
@@ -108,8 +111,8 @@ export default {
       return this.goods[this.current].list;
     },
     isShowTabbar() {
-      let positionY = this.$store.state.screenPosition;
-      return  positionY < -this.topHeight 
+     let positionY = this.$store.state.screenPosition;
+     return   positionY < -619
     },
     isShowTabbar2() {
       return this.isShowTabbar?false:true
@@ -165,12 +168,10 @@ export default {
         this.goods[this.current].list.push(...res.data.list);
       });
     },
-    getTopHeight() {
-      this.topHeight = this.$refs.tabControl2.$el.offsetTop + 44;
-    }
   }
 };
 </script>
+
 
 <style scoped>
 #home {

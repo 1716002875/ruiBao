@@ -5,7 +5,10 @@
 </template>
 <script>
 export default {
-    name : "featureView"
+    name : "featureView",
+    methods:{
+       
+    }
 }
 </script>
 <style scoped>

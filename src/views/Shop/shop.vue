@@ -1,7 +1,8 @@
 <template>
   <div class="shop-list">
    <shop-nav-bar></shop-nav-bar>
-    <scroll class="content" ref="scroll">
+    <scroll class="content" ref="scroll"  v-bind:probeType="3"
+      v-bind:isPullingUp="true">
       <shop-item-list></shop-item-list>
     </scroll>
     <shop-bottom-menu></shop-bottom-menu>
