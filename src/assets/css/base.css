@@ -25,6 +25,7 @@ a{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
   }
   
   body {
@@ -35,6 +36,7 @@ a{
     color: var(--color-text);
     /* rem vw/vh */
     width: 100vw;
+   
   }
   
   a {

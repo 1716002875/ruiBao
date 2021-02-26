@@ -45,8 +45,7 @@
     mounted: function () {
       // 1.操作DOM, 在前后添加Slide
       setTimeout(() => {
-        this.handleDom();
-
+        this.handleDom&&this.handleDom();
         // 2.开启定时器
         this.startTimer();
       }, 2000)
@@ -119,7 +118,10 @@
         // 1.获取要操作的元素
         let swiperEl = document.querySelector('.swiper');
         let slidesEls = swiperEl.getElementsByClassName('slide');
-
+     
+       
+        
+        
         // 2.保存个数
         this.slideCount = slidesEls.length;
 

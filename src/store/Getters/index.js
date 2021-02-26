@@ -4,6 +4,6 @@ export default {
     },
     getShopCart(state) {
         return state.shopCart
-    }
+    },
   
 }

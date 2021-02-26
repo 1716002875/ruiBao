@@ -11,7 +11,7 @@
       ></shop-check-button>
       <div class="product-img"><img v-lazy="shopCart.image" alt="" /></div>
       <div class="product-desc">
-        <span class="title">{{ shopCart.title }}</span>
+        <span class="title" @click="toDetail">{{ shopCart.title }}</span>
         <p class="param">40英寸;40缺角电箱CH</p>
         <div class="content">
           <span class="price">￥{{ shopCart.price }}</span>
@@ -43,6 +43,9 @@ export default {
     subItem() {
        this.$store.commit('subItem',this.shopCart)
     },
+    toDetail() {
+       this.$router.push('/detail/'+this.shopCart.iid)
+    }
 
   },
   components: { ShopCheckButton },

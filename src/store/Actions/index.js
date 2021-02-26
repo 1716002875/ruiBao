@@ -17,6 +17,7 @@ export default {
             context.commit('addToCartNew',payload);
         }
     }
+    
 }
 // export default{
 //     addToCart(context,payload) {

@@ -29,9 +29,19 @@
 //     Vue.prototype.$toast = toast;
 // }
 // export default obj;
-import Toast from './toast.vue';
+// import Toast from './toast.vue';
+// const obj = {};
+// obj.install = function(Vue){
+//     const toastContrustor = Vue.extend(Toast);
+//     const toast = new toastContrustor();
+//     toast.$mount(document.createElement('div'));
+//     document.body.appendChild(toast.$el);
+//     Vue.prototype.$toast = toast;
+// }
+// export default obj;
+import Toast from  './toast.vue';
 const obj = {};
-obj.install = function(Vue){
+obj.install = function(Vue) {
     const toastContrustor = Vue.extend(Toast);
     const toast = new toastContrustor();
     toast.$mount(document.createElement('div'));
@@ -39,3 +49,5 @@ obj.install = function(Vue){
     Vue.prototype.$toast = toast;
 }
 export default obj;
+
+

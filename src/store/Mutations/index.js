@@ -13,6 +13,7 @@ export default {
         if(payload.count >1) {
             payload.count--
         }
-    }
-    
+    },
+   
+        
 }

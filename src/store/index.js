@@ -9,7 +9,8 @@ const state = {
         // 购物车内容
         shopCart:[],
         // 是否全选
-        isCheckAll:false
+        isCheckAll:false,
+        
 };
 const store = new Vuex.Store({
     state,
