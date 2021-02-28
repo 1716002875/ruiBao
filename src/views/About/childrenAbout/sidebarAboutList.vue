@@ -5,6 +5,7 @@
       v-for="(item, index) in category"
       :key="index"
       @click="getSubcategory(index,item.maitKey)"
+      :class="{active: index === currentIndex}"
     >
       {{ item.title }}
     </div>
@@ -13,6 +14,11 @@
 <script>
 export default {
   name: "sidebarAboutList",
+  data(){
+    return{
+      currentIndex:0
+    }
+  },
   props: {
     category: {
       type: Array,
@@ -21,18 +27,16 @@ export default {
       },
     },
   },
-  methods: {
+    methods: {
     getSubcategory(index,maitKey) {
       const obj = {
         maitKey ,
         index
-      }
+      };
       this.$emit("getSubcategory",obj);
-      setTimeout(() =>{
-        this.$emit("getSubcategory",obj);
-      },300)
+      this.currentIndex = index;
     },
-  },
+  }
 };
 </script>
 <style scoped>
@@ -51,5 +55,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.active{
+  background-color: #fff;
+  color: var(--color-tint);
+  border-left:3px solid var(--color-tint) ;
 }
 </style>

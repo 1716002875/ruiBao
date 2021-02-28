@@ -32,6 +32,7 @@
     </scroll>
     <back-top class="backTop" v-if="backtop" @click.native="back"></back-top>
     <detail-bottom-bar @addCart="addCart" ></detail-bottom-bar>
+    <goods-style v-if="false"></goods-style>
   </div>
 </template>
 <script>
@@ -56,6 +57,7 @@ import BackTop from "components/content/BackTop/backTop.vue";
 import GoodsReList from "components/content/goods/GoodsReList.vue";
 import DetailBottomBar from '../Detail/DetailChildren/detailBottomBar.vue';
 import FixBug from "components/content/goods/FixBug.vue";
+import GoodsStyle from '../../common/goodsStyle/goodsStyle.vue';
 
 export default {
   name: "Detail",
@@ -163,6 +165,7 @@ export default {
     FixBug,
     currentindex :null,
     DetailBottomBar,
+    GoodsStyle,
   },
 
   methods: {
@@ -235,7 +238,6 @@ export default {
         this.$store.dispatch('addToCart',product);
         this.$toast.show('添加成功！',2500);
         //在这里提示用户，添加购物车是否成功！
-        
       }
     }
 };

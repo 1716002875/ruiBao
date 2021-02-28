@@ -2,9 +2,11 @@
   <div class="about">
     <navbar-about></navbar-about>
     <scroll class="content"
-      ><sidebar-about-list :category="category" @getSubcategory='getSubcategoryChange'></sidebar-about-list
+      v-bind:probeType="3"
+      v-bind:isPullingUp="true"
+      ><sidebar-about-list :category="category" @getSubcategory='getSubcategoryChange' ></sidebar-about-list
     ></scroll>
-    <content-about :subcategory="subcategory[currentIndex]"></content-about>
+    <content-about :subcategory="subcategory"></content-about>
   </div>
 </template>
 
@@ -31,29 +33,35 @@ export default {
   created() {
     this.categoryAll();
   },
- 
   methods: {
     categoryAll() {
-      getCategory().then((res) => {
+      getCategory().then(res => {
         // this.category包含全部数据
         this.category = res.data.category.list;
-        // this.subcategory数据需要在promise内部then()之后获取category总的值，才能获取自身的值
-       this.category&&this.getSub(
-          this.category[this.currentIndex].maitKey,
-          this.currentIndex
+       // this.subcategory数据需要在promise内部then()之后获取category总的值，才能获取自身的值
+        this.$nextTick(() =>{
+          this.getSub(
+          this.category[0].maitKey,
         );
+        });
+       
       });
     },
     getSubcategoryChange({maitKey,index}) {
-      // 根据侧边栏的改变动态改变currentIndex的值
-     this.currentIndex = index;
-     this.getSub(maitKey,this.currentIndex)
+    // 改变类型maitKey
+    if(this.currentIndex === index) {
+      console.log("会");
+      return;
+    }
+    this.currentIndex = index;
+     this.getSub(maitKey);
     },
-    getSub(type, index) {
-      getSubcategory(type).then((res) => {
-        this.subcategory[index] = res.data.list;
+    getSub(type) {
+      getSubcategory(type).then(res => {
+        // e6的扩展运算符...
+        this.subcategory = [...res.data.list];
       });
-      this.$forceUpdate();
+     
     },
   },
 };

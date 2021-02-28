@@ -1,6 +1,8 @@
 <template>
   <div class="content-about">
-    <scroll class="content">
+    <scroll class="content" 
+      v-bind:probeType="3"
+      v-bind:isPullingUp="true">
       <div class="wrapper">
         <div class="itembox" v-for="(item, index) in subcategory" :key="index">
           <img :src="item.image" alt=""/>
@@ -24,6 +26,10 @@ export default {
       },
     },
   },
+  created() {
+    console.log("---------")
+    console.log(this.subcategory);
+  }
 };
 </script>
 <style scoped>
