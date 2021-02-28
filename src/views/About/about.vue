@@ -47,10 +47,9 @@ export default {
        
       });
     },
+    // 改变类型maitKey,index和当前页面currentIndex比较，防止重复点击相同类型
     getSubcategoryChange({maitKey,index}) {
-    // 改变类型maitKey
     if(this.currentIndex === index) {
-      console.log("会");
       return;
     }
     this.currentIndex = index;
